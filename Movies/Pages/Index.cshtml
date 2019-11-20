@@ -31,47 +31,59 @@
         }
     </div>
     <div>
-    <form method="post">
-        <h4>Search</h4>
-        <input type="text" name="search" />
-        <input type="submit" value="Search" />
-        <div class="checkbox-list">
+        <form method="post">
+            <h4>Search</h4>
+            <input type="text" name="search" value="@Model.search"/>
+            <input type="submit" value="Search and Filter" />
+
+            <h4>Filter by MPAA rating</h4>
+            <div class="checkbox-list">
+                <label>
+                    <input type="checkbox" name="rating" value="G" checked="@Model.rating.Contains("G")" />
+                    Rated G
+                </label>
+            </div>
+            <div class="checkbox-list">
+                <label>
+                    <input type="checkbox" name="rating" value="PG" checked="@Model.rating.Contains("PG")" />
+                    Rated PG
+                </label>
+            </div>
+            <div class="checkbox-list">
+                <label>
+                    <input type="checkbox" name="rating" value="PG-13" checked="@Model.rating.Contains("PG-13")" />
+                    Rated PG-13
+                </label>
+            </div>
+            <div class="checkbox-list">
+                <label>
+                    <input type="checkbox" name="rating" value="R" checked="@Model.rating.Contains("R")" />
+                    Rated R
+                </label>
+            </div>
+            <div class="checkbox-list">
+                <label>
+                    <input type="checkbox" name="rating" value="NC-17" checked="@Model.rating.Contains("NC-17")" />
+                    Rated NC-17
+                </label>
+            </div>
+            <div class="checkbox-list">
+                <label>
+                    <input type="checkbox" name="rating" value="Not Rated" />
+                    Not Rated
+                </label>
+            </div>
+
+            <h4>Review Score</h4>
             <label>
-                <input type="checkbox" name="rating" value="G" />
-                Rated G
+                Minimum IMDb Rating:
+                <input type="number" min="0" max="10" step="0.1" name="minIMDb" value="@Model.minIMDb" />
             </label>
-        </div>
-        <div class="checkbox-list">
             <label>
-                <input type="checkbox" name="rating" value="PG" />
-                Rated PG
+                Maximum IMDb Rating:
+                <input type="number" min="0" max="10" step="0.1" name="maxIMDb" value="@Model.maxIMDb" />
             </label>
-        </div>
-        <div class="checkbox-list">
-            <label>
-                <input type="checkbox" name="rating" value="PG-13" />
-                Rated PG-13
-            </label>
-        </div>
-        <div class="checkbox-list">
-            <label>
-                <input type="checkbox" name="rating" value="R" />
-                Rated R
-            </label>
-        </div>
-        <div class="checkbox-list">
-            <label>
-                <input type="checkbox" name="rating" value="NC-17" />
-                Rated NC-17
-            </label>
-        </div>
-        <div class="checkbox-list">
-            <label>
-                <input type="checkbox" name="rating" value="Not Rated" />
-                Not Rated
-            </label>
-        </div>
-    </form>
+        </form>
     </div>
 </div>
 

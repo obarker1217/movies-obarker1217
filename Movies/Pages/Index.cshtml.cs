@@ -12,29 +12,41 @@ namespace Movies.Pages
         MovieDatabase movieDatabase = new MovieDatabase();
 
         public List<Movie> Movies;
+        
+        [BindProperty]
+        public string search { get; set; }
+
+        [BindProperty]
+        public List<string> rating { get; set; } = new List<string>();
+
+        [BindProperty]
+        public float? minIMDb { get; set; }
+
+        [BindProperty]
+        public float? maxIMDb { get; set; }
 
         public void OnGet()
         {
             Movies = movieDatabase.All;
         }
 
-        public void OnPost(string search, List<string> rating)
+        public void OnPost()
         {
-            if(search != null && rating.Count != 0)
+            Movies = movieDatabase.All;
+
+            if(rating.Count != 0)
             {
-                Movies = movieDatabase.SearchAndFilter(search, rating);
+                Movies = MovieDatabase.Filter(Movies, rating);
             }
-            else if(rating.Count != 0)
+
+            if(search != null)
             {
-                Movies = movieDatabase.Filter(rating);
+                Movies = MovieDatabase.Search(Movies, search);
             }
-            else if(search != null)
+
+            if(minIMDb != null)
             {
-                Movies = movieDatabase.Search(search);
-            }
-            else
-            {
-                Movies = movieDatabase.All;
+                Movies = MovieDatabase.FilterByMinIMDb(Movies, (float)minIMDb);
             }
         }
     }

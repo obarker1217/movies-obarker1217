@@ -27,12 +27,12 @@ namespace Movies.Pages
 
         public void OnGet()
         {
-            Movies = movieDatabase.All;
+            Movies = MovieDatabase.All;
         }
 
         public void OnPost()
         {
-            Movies = movieDatabase.All;
+            Movies = MovieDatabase.All;
 
             if(rating.Count != 0)
             {
